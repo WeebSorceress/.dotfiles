@@ -122,7 +122,8 @@
               users = digga.lib.rakeLeaves ./users;
             };
             suites = with profiles; rec {
-              base = [ core.nixos users.nixos users.root ];
+              base = [ core.nixos bootloader.systemd-boot ];
+              user = [ users.root users.nixos ];
             };
           };
         };
