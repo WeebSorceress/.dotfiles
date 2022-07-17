@@ -116,10 +116,7 @@
           };
 
           imports = [ (digga.lib.importHosts ./hosts/nixos) ];
-          hosts = {
-            /* set host-specific properties here */
-            NixOS = { };
-          };
+          hosts = { };
           importables = rec {
             profiles = digga.lib.rakeLeaves ./profiles // {
               users = digga.lib.rakeLeaves ./users;
