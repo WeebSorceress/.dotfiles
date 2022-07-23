@@ -2,9 +2,11 @@
 {
   home-manager.users = { inherit (hmUsers) nixos; };
 
+  enchantment.erase-sys-darlings.users = [ "nixos" ];
+
   users.users.nixos = {
-    password = "nixos";
-    description = "default";
+    initialPassword = "nixos";
+    description = "NixOS";
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };

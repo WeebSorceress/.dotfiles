@@ -46,6 +46,8 @@
 
       nixos-hardware.url = "github:nixos/nixos-hardware";
 
+      impermanence.url = "github:nix-community/impermanence";
+
       nixos-generators.url = "github:nix-community/nixos-generators";
     };
 
@@ -55,6 +57,7 @@
     , nixos
     , home
     , nixos-hardware
+    , impermanence
     , nur
     , agenix
     , nvfetcher
@@ -110,6 +113,7 @@
               { lib.our = self.lib; }
               digga.nixosModules.bootstrapIso
               digga.nixosModules.nixConfig
+              impermanence.nixosModules.impermanence
               home.nixosModules.home-manager
               agenix.nixosModules.age
             ];
@@ -159,7 +163,7 @@
 
         home = {
           imports = [ (digga.lib.importExportableModules ./users/modules) ];
-          modules = [ ];
+          modules = [ impermanence.nixosModules.home-manager.impermanence ];
           importables = rec {
             profiles = digga.lib.rakeLeaves ./users/profiles;
             suites = with profiles; rec {
