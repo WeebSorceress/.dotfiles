@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./common.nix
+    ../common.nix
   ];
 
   # Recreate /run/current-system symlink after boot
