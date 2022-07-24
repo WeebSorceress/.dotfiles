@@ -126,8 +126,10 @@
               users = digga.lib.rakeLeaves ./users;
             };
             suites = with profiles; rec {
-              base = [ core.nixos bootloader.systemd-boot ];
+              main = user ++ base ++ misc;
               user = [ users.root users.nixos ];
+              base = [ core.nixos ];
+              misc = [ ];
             };
           };
         };
