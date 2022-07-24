@@ -1,9 +1,13 @@
 let
-  # set ssh public keys here for your system and user
-  system = "";
-  user = "";
-  allKeys = [ system user ];
+  mako = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC2mysFaTdGB91xP+ByQr8GD97h1gK2AN6xURcokGCGj root@mako";
+  systems = [ mako ];
+
+  siren = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNUMD65dLiKkAGSDHaAVNxu1NJW8U23hQzUqHCymuk9 <ssh://siren|ed25519>";
+  users = [ siren ];
+
+  allKeys = systems ++ users;
 in
 {
-  "secret.age".publicKeys = allKeys;
+  "hercules-ci/mako.age".publicKeys = allKeys;
+  "hercules-ci/binary-caches.age".publicKeys = allKeys;
 }

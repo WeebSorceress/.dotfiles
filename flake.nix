@@ -129,7 +129,7 @@
               main = user ++ base ++ misc;
               user = [ users.root users.nixos ];
               base = [ core.nixos ];
-              misc = [ ];
+              misc = [ hercules-ci ];
             };
           };
         };
