@@ -1,6 +1,11 @@
-{ lib, ... }:
+{ lib, self, ... }:
 {
   programs.ssh.startAgent = true;
+
+  age.secrets = {
+    "openssh/edgerunner-public" = { file = "${self}/secrets/openssh/edgerunner-public.age"; path = "/etc/ssh/edgerunner.pub"; };
+    "openssh/edgerunner-private" = { file = "${self}/secrets/openssh/edgerunner-private.age"; path = "/etc/ssh/edgerunner"; };
+  };
 
   enchantment.erase-sys-darlings.persistent.files = [
     "/etc/ssh/ssh_host_rsa_key"
