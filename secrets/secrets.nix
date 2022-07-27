@@ -8,6 +8,7 @@ let
   allKeys = systems ++ users;
 in
 {
+  "hercules-ci/secrets.age".publicKeys = allKeys;
   "hercules-ci/mako.age".publicKeys = allKeys;
   "hercules-ci/binary-caches.age".publicKeys = allKeys;
   "openssh/edgerunner-public.age".publicKeys = allKeys;
