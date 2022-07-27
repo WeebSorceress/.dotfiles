@@ -10,4 +10,6 @@ in
 {
   "hercules-ci/mako.age".publicKeys = allKeys;
   "hercules-ci/binary-caches.age".publicKeys = allKeys;
+  "openssh/edgerunner-public.age".publicKeys = allKeys;
+  "openssh/edgerunner-private.age".publicKeys = allKeys;
 }
