@@ -7,7 +7,7 @@
     "openssh/edgerunner-private" = { file = "${self}/secrets/openssh/edgerunner-private.age"; path = "/etc/ssh/edgerunner"; };
   };
 
-  enchantment.erase-sys-darlings.persistent.files = [
+  enchantment.erase-sys-darlings.persistent.system.files = [
     "/etc/ssh/ssh_host_rsa_key"
     "/etc/ssh/ssh_host_rsa_key.pub"
     "/etc/ssh/ssh_host_ed25519_key"

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  enchantment.erase-sys-darlings.persistent.files = [ "/root/.local/share/nix/trusted-settings.json" ];
+  enchantment.erase-sys-darlings.persistent.user.directories = [ ".local/share/nix" ];
 
   nix = {
     useSandbox = true;

@@ -126,10 +126,12 @@
               users = digga.lib.rakeLeaves ./users;
             };
             suites = with profiles; rec {
-              main = user ++ base ++ misc;
-              user = [ users.root users.nixos ];
+              main = base ++ user ++ misc;
               base = [ core.nixos ];
+              user = [ users.root users.siren users.witch ];
               misc = [ hercules-ci ];
+              station = main ++ [ bootloader.systemd-boot filesystem.zfs wireless ];
+              iso = base ++ [ users.root users.nixos ] ++ misc ++ [ bootloader.systemd-boot wireless ];
             };
           };
         };
@@ -170,6 +172,8 @@
             profiles = digga.lib.rakeLeaves ./users/profiles;
             suites = with profiles; rec {
               base = [ direnv git ];
+              siren = base ++ [ edgy ];
+              witch = base ++ [ ];
             };
           };
           users = {
@@ -188,7 +192,8 @@
             # it could just be left to the developer to determine what's
             # appropriate. after all, configuring these hm users is one of the
             # first steps in customizing the template.
-            nixos = { suites, ... }: { imports = suites.base; };
+            siren = { suites, ... }: { imports = suites.siren; };
+            witch = { suites, ... }: { imports = suites.witch; };
             # FIXME: disabled darwin stuff for now
             # darwin = { suites, ... }: { imports = suites.base; };
           }; # digga.lib.importers.rakeLeaves ./users/hm;

@@ -6,7 +6,11 @@
 
   time.timeZone = lib.mkDefault "America/Sao_Paulo";
 
-  enchantment.erase-sys-darlings.persistent = {
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
+
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+
+  enchantment.erase-sys-darlings.persistent.system = {
     directories = [ "/var/log" ];
     files = [ "/etc/machine-id" ];
   };

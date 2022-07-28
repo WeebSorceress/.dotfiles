@@ -2,6 +2,11 @@
 {
   users.defaultUserShell = pkgs.zsh;
 
+  enchantment.erase-sys-darlings.persistent.user.files = [
+    ".zshrc"
+    ".zsh_history"
+  ];
+
   programs.zsh = {
     enable = true;
     histSize = 10000;
