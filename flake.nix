@@ -130,8 +130,8 @@
               base = [ core.nixos ];
               user = [ users.root users.siren users.witch ];
               misc = [ hercules-ci ];
-              station = main ++ [ bootloader.systemd-boot filesystem.zfs wireless ];
-              iso = base ++ [ users.root users.nixos ] ++ misc ++ [ bootloader.systemd-boot wireless ];
+              station = main ++ [ bootloader.systemd-boot filesystem.zfs ];
+              iso = base ++ [ users.root users.nixos ] ++ misc ++ [ bootloader.systemd-boot ];
             };
           };
         };
