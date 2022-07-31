@@ -126,11 +126,12 @@
               users = digga.lib.rakeLeaves ./users;
             };
             suites = with profiles; rec {
-              main = base ++ user ++ misc;
+              main = base ++ misc ++ user;
               base = [ core.nixos ];
-              user = [ users.root users.siren users.witch ];
               misc = [ hercules-ci ];
-              station = main ++ [ bootloader.systemd-boot filesystem.zfs ];
+              user = [ users.root users.siren users.witch ];
+              graphical = main ++ [ gui xdg ];
+              station = [ bootloader.systemd-boot filesystem.zfs ] ++ graphical;
               iso = base ++ [ users.root users.nixos ] ++ misc ++ [ bootloader.systemd-boot ];
             };
           };
@@ -174,6 +175,7 @@
               base = [ direnv git ];
               siren = base ++ [ edgy ];
               witch = base ++ [ ];
+              graphical = [ xdg ];
             };
           };
           users = {
