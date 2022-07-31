@@ -1,8 +1,8 @@
 { config, lib, hmUsers, ... }:
 {
-  home-manager.users = { inherit (hmUsers) siren; };
+  enchantment.setup-my-defaults.users = [ "siren" ];
 
-  enchantment.erase-sys-darlings.users = [ "siren" ];
+  home-manager.users = { inherit (hmUsers) siren; };
 
   users.users.siren = {
     isNormalUser = true;
