@@ -1,9 +1,11 @@
 {
   description = "A highly structured configuration database.";
 
-  nixConfig.extra-experimental-features = "nix-command flakes";
-  nixConfig.extra-substituters = "https://weeb-sorceress.cachix.org https://nrdxp.cachix.org https://nix-community.cachix.org";
-  nixConfig.extra-trusted-public-keys = "weeb-sorceress.cachix.org-1:p4PNpfq/O/CUoVEYz7bYFBYMkmcZO85CKYGu+u4E+Rc= nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+  nixConfig = {
+    extra-experimental-features = "nix-command flakes";
+    extra-substituters = "https://weeb-sorceress.cachix.org https://nixpkgs-wayland.cachix.org https://nrdxp.cachix.org https://nix-community.cachix.org";
+    extra-trusted-public-keys = "weeb-sorceress.cachix.org-1:p4PNpfq/O/CUoVEYz7bYFBYMkmcZO85CKYGu+u4E+Rc= nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA= nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+  };
 
   inputs =
     {
@@ -48,6 +50,8 @@
 
       impermanence.url = "github:nix-community/impermanence";
 
+      nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
       nixos-generators.url = "github:nix-community/nixos-generators";
     };
 
@@ -58,6 +62,7 @@
     , home
     , nixos-hardware
     , impermanence
+    , nixpkgs-wayland
     , nur
     , agenix
     , nvfetcher
@@ -100,6 +105,7 @@
           nur.overlay
           agenix.overlay
           nvfetcher.overlay
+          nixpkgs-wayland.overlay
 
           (import ./pkgs)
         ];
