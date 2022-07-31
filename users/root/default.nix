@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  enchantment.erase-sys-darlings.users = [ "root" ];
+  enchantment.setup-my-defaults.users = [ "root" ];
 
   users.users.root = {
     initialHashedPassword = lib.mkForce null;

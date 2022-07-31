@@ -5,7 +5,6 @@ in
 {
   options.enchantment.erase-sys-darlings = {
     enable = lib.mkEnableOption "Scrolls of System Impermanence";
-    users = lib.mkOption { default = [ ]; };
     disk = {
       default = lib.mkOption { default = ""; };
       mirrored = lib.mkOption { default = ""; };
@@ -27,7 +26,7 @@ in
     users.mutableUsers = false;
     programs.fuse.userAllowOther = true;
     fileSystems."${cfg.persistent.path}".neededForBoot = true;
-    system.activationScripts = lib.genAttrs cfg.users (user: {
+    system.activationScripts = lib.genAttrs config.enchantment.setup-my-defaults.users (user: {
       text = ''
         mkdir -p ${cfg.persistent.path}/home/${user}
         chown ${user}:users ${cfg.persistent.path}/home/${user}
@@ -41,7 +40,7 @@ in
       inherit files directories;
       hideMounts = true;
     };
-    home-manager.users = lib.genAttrs cfg.users (user: {
+    home-manager.users = lib.genAttrs config.enchantment.setup-my-defaults.users (user: {
       enchantment.erase-usr-darlings = {
         enable = true;
         persistent = with cfg.persistent.user; {

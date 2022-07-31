@@ -3,7 +3,10 @@
   fileSystems."/" = lib.mkDefault { device = "/dev/disk/by-label/nixos"; };
 
   boot.loader = {
-    systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
+    systemd-boot = {
+      enable = true;
+      consoleMode = "max";
+    };
   };
 }

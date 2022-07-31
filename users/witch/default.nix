@@ -1,8 +1,8 @@
 { hmUsers, ... }:
 {
-  home-manager.users = { inherit (hmUsers) witch; };
+  enchantment.setup-my-defaults.users = [ "witch" ];
 
-  enchantment.erase-sys-darlings.users = [ "witch" ];
+  home-manager.users = { inherit (hmUsers) witch; };
 
   users.users.witch = {
     isNormalUser = true;
