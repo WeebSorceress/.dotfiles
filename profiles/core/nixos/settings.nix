@@ -2,10 +2,6 @@
 {
   services.earlyoom.enable = true;
 
-  i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
-
-  time.timeZone = lib.mkDefault "America/Sao_Paulo";
-
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
